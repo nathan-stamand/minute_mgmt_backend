@@ -8,6 +8,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use('/v1/api/', indexRouter); // This handles every request in indexRouter through /v1/api
+app.use('/v1/api', indexRouter); // This handles every request in indexRouter through /v1/api
 
 export default app;

@@ -14,5 +14,6 @@ router.route('/')
   .delete(function(req, res) {
     return res.send('received DELETE HTTP')
   });
-  
+
 module.exports = router;
+

@@ -26,6 +26,22 @@ class Model {
       `;
     return this.pool.query(query);
   }
+
+  async delete(id, isParent = false) {
+    const mainQuery = `
+      DELETE FROM ${this.table}
+      WHERE id = ${id}
+    `;
+    let secondQuery;
+    if (isParent) {
+      secondQuery = `
+        DELETE FROM subtasks
+        WHERE task_id = ${id}
+      `;
+    }
+    this.pool.query(secondQuery);
+    return this.pool.query(mainQuery);
+  }
 }
 
 export default Model;

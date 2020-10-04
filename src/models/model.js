@@ -27,6 +27,16 @@ class Model {
     return this.pool.query(query);
   }
 
+  async updateWithReturn(valuesArr) {
+    const [ id, task, time ] = valuesArr;
+    const query = `
+      UPDATE ${this.table}
+      SET task = '${task}', time = ${time}
+      WHERE id = ${id}
+    `;
+    return this.pool.query(query);
+  }
+
   async delete(id, isParent = false) {
     const mainQuery = `
       DELETE FROM ${this.table}

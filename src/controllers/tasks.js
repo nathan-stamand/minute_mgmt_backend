@@ -23,6 +23,16 @@ export const addTask = async (req, res) => {
   }
 };
 
+export const updateTask = async (req, res) => {
+  const valuesArray = Object.values(req.body);
+  try {
+    await tasksModel.updateWithReturn(valuesArray);
+    res.status(200).json({ task: req.body });
+  } catch (err) {
+    res.status(200).json({ message: err.stack });
+  }
+};
+
 export const deleteTask = async (req, res) => {
   const { id } = req.body;
   try {

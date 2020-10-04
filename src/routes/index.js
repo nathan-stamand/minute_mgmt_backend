@@ -1,9 +1,9 @@
 import express from 'express';
-import { indexPage, messagesPage, addMessage } from '../controllers';
+import { indexPage, subTasksPage, tasksPage } from '../controllers';
 
 const indexRouter = express.Router();
 indexRouter.get('/', indexPage);
-indexRouter.get('/messages', messagesPage);
-indexRouter.post('/messages', addMessage);
+indexRouter.get('/tasks', tasksPage);
+indexRouter.get('/subtasks', subTasksPage);
 
 export default indexRouter;

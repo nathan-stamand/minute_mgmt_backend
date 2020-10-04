@@ -12,7 +12,9 @@ class Model {
 
   async select(columns, clause) {
     let query = `SELECT ${columns} FROM ${this.table}`;
-    if (clause) query += clause;
+    if (clause) {
+      query += clause;
+    }
     return this.pool.query(query);
   }
 

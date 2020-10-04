@@ -4,7 +4,7 @@ const tasksModel = new Model('tasks');
 
 export const tasksPage = async (req, res) => {
   try {
-    const data = await tasksModel.select('task_id, task, time, complete');
+    const data = await tasksModel.select('id, task, time, complete');
     res.status(200).json({ tasks: data.rows });
   } catch (err) {
     res.status(200).json({ message: err.stack });
@@ -18,6 +18,16 @@ export const addTask = async (req, res) => {
   try {
     const data = await tasksModel.insertWithReturn(columns, values);
     res.status(200).json({ tasks: data.rows });
+  } catch (err) {
+    res.status(200).json({ message: err.stack });
+  }
+};
+
+export const deleteTask = async (req, res) => {
+  const { id } = req.body;
+  try {
+    tasksModel.delete(id, true);
+    res.status(200).json({ message: `Task #${id}` });
   } catch (err) {
     res.status(200).json({ message: err.stack });
   }

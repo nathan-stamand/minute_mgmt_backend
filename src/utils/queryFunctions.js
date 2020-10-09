@@ -1,8 +1,8 @@
 import { pool } from '../models/pool';
 import {
-  insertTasksSubtasks,
-  dropTasksSubtasksTables,
-  createTasksSubtasksTables,
+  insertTasks,
+  dropTasksTable,
+  createTasksTable
 } from './queries';
 
 export const executeQueryArray = async (arr) => new Promise((resolve) => {
@@ -13,6 +13,6 @@ export const executeQueryArray = async (arr) => new Promise((resolve) => {
   });
 });
 
-export const dropTables = () => executeQueryArray([ dropTasksSubtasksTables ]);
-export const createTables = () => executeQueryArray([ createTasksSubtasksTables ]);
-export const insertIntoTables = () => executeQueryArray([ insertTasksSubtasks ]);
+export const dropTables = () => executeQueryArray([ dropTasksTable ]);
+export const createTables = () => executeQueryArray([ createTasksTable ]);
+export const insertIntoTables = () => executeQueryArray([ insertTasks ]);
